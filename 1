@@ -1,1 +1,21 @@
 printf
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 한글 폰트 설정
+plt.rcParams['font.family'] = 'Malgun Gothic'
+
+
+# {a,b,c}와 {d,e}의 조합에 대한 상관관계 계산
+corr = pd.DataFrame(index=['여론지표1(정규화)', '여론지표1(표준화)', '여론지표'], columns=['주택가격지표(정규화)', '주택가격지표(표준화)'])
+for col1 in ['여론지표1(정규화)', '여론지표1(표준화)', '여론지표']:
+    for col2 in ['주택가격지표(정규화)', '주택가격지표(표준화)']:
+        corr.loc[col1, col2] = SNSAPT1[col1].corr(SNSAPT1[col2])
+
+# 데이터 타입을 float로 변환
+corr = corr.astype(float)
+
+# 히트맵 그리기
